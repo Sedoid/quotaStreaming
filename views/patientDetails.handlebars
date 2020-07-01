@@ -1,0 +1,120 @@
+{{> header}}
+
+<div class="container">
+    <div class="row" style="min-height: 300px;">
+        <div class="col-md-3 h-100" >
+            <img src="./Patients/{{email}}/{{name}}" alt="sample image" class=" w-80 img-thumbnail h-100" style="max-height: 300px;">
+        </div>
+
+        <div class="col-md-9 d-flex flex-column justify-content-between pt-md-4">
+            <ul class="d-flex flex-column justify-content-between  h-50">
+                <li>Full Name$ <span class="text-success"> {{firstName}} {{lastName}} </span></li>
+                <li>Age$  {{age}}</li>
+                <li>Gender$ {{gender}}</li>
+                <li>email$ {{email}}</li>
+                <li>Last login time {{name}}</li>
+            </ul>
+
+            <!-- Button trigger modal -->
+            <div class="d-flex align-items-center">
+                 <button type="button" class="btn btn-primary mr-4  col-md-2 col-4 " data-toggle="modal" data-target="#exampleModal">
+                Update Profile
+                </button>
+
+                {{#if message}}
+                <div class="alert {{messageClass}}" role="alert">
+                {{message}}
+                </div>
+                {{/if}}
+            </div>
+           
+        </div>
+
+    </div>
+    <hr />
+    <h5> Previous Logs</h5>
+    <div class="row">
+        {{message}}
+         user logs goes here
+    </div>
+    
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form method="POST" class="col-md-12" enctype="multipart/form-data" action="/patientDetails">
+
+           
+
+            <div class="form-group">
+                <label for="firstNameInput">First Name</label>
+                <input name="firstName" type="text" placeholder="{{firstName}}" class="form-control" id="firstNameInput">
+            </div>
+
+            <div class="form-group">
+                <label for="firstNameInput">Last Name</label>
+                <input name="lastName" type="text" placeholder="{{lastName}}" class="form-control" id="firstNameInput">
+            </div>
+
+             <div class="form-group">
+                <label for="firstNameInput">Your Age</label>
+                <input name="age" type="number" placeholder="{{age}}" class="form-control" id="Image">
+            </div>
+            <div class="mb-3 form-group">
+               <Label class="text-strong">Gender</Label>
+               <br />
+               {{#if gender}}
+                <input name="gender" checked="true" type="radio" placeholder="gender" value="Male"> <label class="mr-4">Male</label>
+           
+                <input name="gender" type="radio" placeholder="gender" value="female"> <label>Female</label>
+                
+                {{/if}}
+                {{#else}}
+                <input name="gender" checked="true" type="radio" placeholder="gender" value="Male"> <label class="mr-4">Male</label>         
+            
+                <input name="gender" type="radio" placeholder="gender" value="female"> <label>Female</label>
+                {{/else}}
+            </div>
+
+    
+
+            <div class="form-group">
+                <label for="passwordInput">New Password</label>
+                <input name='password' type="" class="form-control" id="passwordInput" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="passwordInput">Old Password</label>
+                <input name='confirmPassword' type="" class="form-control" id="passwordInput" placeholder="Enter old Password">
+            </div>
+
+            {{!-- <form action="/register" enctype="multipart/form-data" method="post"> --}}
+            <input type="file" name="upload" multiple>  
+            <br />
+            {{!-- </form> --}}
+
+            
+            <div class="modal-footer d-flex justify-content-between px-0">
+                    <button type="button" class="btn btn-secondary col-4" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+
+            </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{{> footer}}
