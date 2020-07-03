@@ -1,24 +1,39 @@
 {{> header}}
 <div class="container">
-    <h1 class="text-center py-5"> This is Home</h1>
-    <div class="row">
-        <div class="col-md-8 bg-primary px-0">
-            <h4>Lets Stream Some Videos Online</h4>
-            <video controls src="https://localhost:3000/api/video"></video>
-        </div>
-        <div class="col-md-4 py-5 bg-warning">
+    <h1 class="text-center py-4">Demo</h1>
 
-        </div>
+    <h4>Track Your Data as you Stream</h4>
+    
+    <div class="row bg-light">
+        <form method="POST" action="/api/video" class="col-md-12 px-0 d-flex align-items-center justify-content-between">
+
+
+            <video>               
+                <source src="http://localhost:3000/api/video" type="video/mp4">
+            </video>
+            
+            <div class="form-group">
+                <label>quota:</label>,
+            <input name="quota" required type="number" value="1">
+            </div>
+           <input  type="submit" value="Play" class="btn btn-primary"/> 
+        </form >
+       
     </div>
 </div>
 <script>
-    console.log('Hello World');
+//    console.log('Hello World');
 //( async ()=>{
-//    let response = await  fetch('/api/video')
-//    let data = await response.json()
+//  let response = await  fetch('/api/video')
+//   let data = await response.json()
 
 //    console.log(data.message)
+//    console.log(data.size)
 //})()
     
 </script>
-{{> footer}}
+{{!-- {{> footer}} --}}
+
+<div class="jumbotron mt-4 rounded-0 py-4 fixed-bottom mb-0">
+    <h6 class="text-center"> &copy;SevenAdvanceAcademy</h6>
+</div>
