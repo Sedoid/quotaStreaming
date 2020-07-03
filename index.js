@@ -13,7 +13,8 @@ const EditProfile = require('./routes/editProfile');
 const Api = require('./API/api_routes');
 const fs = require('fs')
 let onlineUsers = {}
-const path = require('path')
+const path = require('path');
+const port = process.env.PORT || 3000;
 const {
     hashedPassword,
     authToken
@@ -190,6 +191,6 @@ app.post('/patientDetails', (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is running on port 3000');
 })
