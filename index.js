@@ -36,14 +36,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
+    console.log('requesting  : '+ req.path)
     console.log('Checking cookies');
     let token = req.cookies['authtoken'];
-    console.log('The token: ' + token);
+    // console.log('The token: ' + token);
     onlineUsers = jsonfile.readFileSync(path.join(__dirname, 'onlineUsers.json'))
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-    console.log('Online Users: ' + onlineUsers);
-    console.log(onlineUsers[token])
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    // console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    // console.log('Online Users: ' + onlineUsers);
+    // console.log(onlineUsers[token])
+    // console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     req.user = onlineUsers[token];
 
     next();
@@ -80,17 +81,17 @@ app.use('/api',Api);
 
 
 app.get('/patientDetails', (req, res) => {
-    console.log('reguesting the user details')
-    console.log(req.user)
+    // console.log('reguesting the user details')
+    // console.log(req.user)
     let token = req.cookies['authtoken'];
-    console.log('The token: ' + token);
-    console.log(onlineUsers)
+    // console.log('The token: ' + token);
+    // console.log(onlineUsers)
     onlineUsers = jsonfile.readFileSync(path.join(__dirname, 'onlineUsers.json'))
     console.log(onlineUsers)
     if (req.user) {
-        console.log('+++++++++++++++++++++++++++++++++')
-        console.log(req.user)
-        console.log('+++++++++++++++++++++++++++++++++')
+        // console.log('+++++++++++++++++++++++++++++++++')
+        // console.log(req.user)
+        // console.log('+++++++++++++++++++++++++++++++++')
         let user = patient.getUserDetails(req.user.email)
         res.render('patientDetails', {
             firstName: user.firstName,
